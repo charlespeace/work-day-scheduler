@@ -1,16 +1,17 @@
 $(function() {
+    $('#currentDay').text(moment().format('dddd, MMMM Do'));
 
-    // Function to check time
+    // Check time and apply appropriate class
     function checkTime() {
         var currentTime = moment().hours();
-        // Loop through time block classes
+
         $('.time-block').each(function() {
             var blockTime = parseInt(
                 $(this)
                     .attr('id')
                     .split('-')[1]
             )
-            // Check and apply appropriate classes based on current time
+
             if (blockTime < currentTime) {
                 $(this).addClass('past')
             } else if (blockTime === currentTime) {
@@ -33,7 +34,7 @@ $(function() {
             .parent()
             .attr('id')
             localStorage.setItem(time, note)
-            console.log('Added to local storage')
+            console.info('Added to local storage')
     })
     
     // Load locally stored data for each hour
