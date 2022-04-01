@@ -1,4 +1,5 @@
 $(function() {
+    // Function to check time
     function checkTime() {
         var currentTime = moment().hours();
         // Loop through time block classes
@@ -21,6 +22,17 @@ $(function() {
             }
         })
     }
+
+    // Listen and save notes to local storage
+    $('.saveBtn').on('click', function() {
+        var note = $(this)
+            .siblings('description')
+        var time = $(this)
+            .parent()
+            .attr('id')
+            localStorage.setItem(time, note)
+            console.log('Saved to local storage')
+    })
+
     checkTime();
-    console.log('getting time')
 })
